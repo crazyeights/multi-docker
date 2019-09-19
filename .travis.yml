@@ -1,0 +1,22 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t crazyeights/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true crazyeights/react-test npm test
+
+after_success:
+  - docker build -t crazyeights/multi-client ./client
+  - docker build -t crazyeights/multi-nginx ./nginx
+  - docker build -t crazyeights/multi-server ./server
+  - docker build -t crazyeights/multi-worker ./worker
+  # Log in to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push crazyeights/multi-client
+  - docker push crazyeights/multi-nginx
+  - docker push crazyeights/multi-server
+  - docker push crazyeights/multi-worker

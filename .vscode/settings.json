@@ -6,6 +6,7 @@
         "PGPORT",
         "PGUSER",
         "Postgres",
+        "crazyeights",
         "hgetall",
         "hset",
         "nginx",
