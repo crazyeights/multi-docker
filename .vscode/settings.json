@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
+        "AWSEB",
+        "Dockerrun",
         "PGDATABASE",
         "PGHOST",
         "PGPASSWORD",
@@ -7,6 +9,7 @@
         "PGUSER",
         "Postgres",
         "crazyeights",
+        "elasticbeanstalk",
         "hgetall",
         "hset",
         "nginx",
